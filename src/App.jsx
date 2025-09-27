@@ -15,7 +15,7 @@ import CreateAccount from './components/CreateAccount';
 import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
 import Workflow from './components/Workflow'; // ✅ your actual component
-import Features from './components/Features'; // ✅ new import
+
 
 const particleOptions = {
     // ... your existing particleOptions object
@@ -74,7 +74,7 @@ const App = () => {
                 <Route path="/workflow" element={<Workflow />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/testimonials" element={<Testimonials />} />
-                <Route path="/features" element={<Features />} /> {/* ✅ new route */}
+                
             </Routes>
         </div>
     );

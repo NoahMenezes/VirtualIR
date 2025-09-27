@@ -255,22 +255,39 @@ button {
 /* --- Features Section Styles --- */
 .features-section {
     margin-top: 2.5rem;
-    padding-bottom: 5rem;
+    padding: 4rem 1rem 5rem;
+    background-color: #171717;
 }
 
 .features-grid {
     display: grid;
-    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 3rem;
     align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-@media (min-width: 768px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+}
 
 .code-block {
     background-color: #262626;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 0.5rem;
     border: 1px solid #404040;
+    font-family: monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    min-width: 0;
 }
+
 
 .code-block pre {
     font-size: 0.875rem;
