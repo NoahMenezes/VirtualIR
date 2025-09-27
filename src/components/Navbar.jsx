@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { MenuIcon, CloseIcon } from './Icons';
 import '../App.css';
-
 const navItems = [
     { href: "#", label: "Features" },
     { href: "#", label: "Workflow" },
