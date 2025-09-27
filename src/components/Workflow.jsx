@@ -4,27 +4,40 @@ import './Workflow.css';
 const workflowSteps = [
   {
     step: "1",
-    title: "Code & Iterate",
-    description: "Write your code in your preferred environment. Our CLI tool provides instant feedback and error checking.",
+    title: "Plan & Design",
+    description: "Map out features, define goals, and create wireframes to guide your product roadmap.",
   },
   {
     step: "2",
-    title: "Review & Merge",
-    description: "Submit your code for review. Our platform provides a clear, version-controlled history of all changes.",
+    title: "Code & Iterate",
+    description: "Write code in your preferred stack. Get instant feedback and error checking with our smart CLI tools.",
   },
   {
     step: "3",
+    title: "Review & Merge",
+    description: "Submit your code for peer review with version-controlled pull requests and automated tests.",
+  },
+  {
+    step: "4",
     title: "Deploy & Monitor",
-    description: "Deploy your application to any environment with a single command. Monitor performance with our built-in analytics.",
+    description: "Push your code to production confidently with zero-downtime deployments and performance monitoring.",
+  },
+  {
+    step: "5",
+    title: "Analyze & Improve",
+    description: "Use built-in analytics and user feedback to make continuous product improvements.",
   },
 ];
 
 const Workflow = () => {
   return (
     <div className="container workflow-section">
-      <h2 className="hero-title">
-        Accelerate Your <span className="gradient-text">Workflow</span>
+      <h2 className="workflow-title">
+        Elevate Your <span className="gradient-text">Workflow</span>
       </h2>
+      <p className="workflow-subtitle">
+        Streamline your development process from idea to production.
+      </p>
       <div className="workflow-items">
         {workflowSteps.map((item, index) => (
           <div key={index} className="workflow-item">

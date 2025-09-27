@@ -1,92 +1,93 @@
-/* src/components/Workflow.css */
-
 .workflow-section {
-    padding: 5rem 1rem;
-    text-align: center;
-    position: relative;
-    border-bottom: 1px solid #404040; /* Separator line */
+  padding: 5rem 1rem;
+  text-align: center;
+  background: #111827;
+  color: white;
+  border-bottom: 1px solid #2d2d2d;
+}
+
+.workflow-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.workflow-subtitle {
+  font-size: 1.1rem;
+  color: #d1d5db;
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .workflow-items {
-    margin-top: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
 }
 
 .workflow-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 3rem;
-    position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #2c2c2c;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  max-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- Responsive Layout for Desktop --- */
-@media (min-width: 768px) {
-    .workflow-items {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-    .workflow-item {
-        width: 30%;
-        margin-bottom: 0;
-    }
+.workflow-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .step-number {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background: #262626;
-    border: 1px solid #404040;
-    color: #f97316; /* Orange accent */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.25rem;
-    font-weight: 600;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #f97316;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.3);
 }
 
 .workflow-item h4 {
-    margin-top: 1.5rem;
-    font-size: 1.25rem;
-    font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #f3f4f6;
 }
 
 .workflow-item p {
-    margin-top: 0.75rem;
-    color: #a3a3a3;
+  font-size: 0.95rem;
+  color: #9ca3af;
 }
 
-/* --- Dashed Connecting Line --- */
-.workflow-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-}
-
-/* Line for mobile (vertical) */
-@media (max-width: 767px) {
-    .workflow-item:not(:last-child)::after {
-        height: 4rem;
-        width: 1px;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-top: -1rem;
-    }
-}
-
-/* Line for desktop (horizontal) */
+/* Responsive Grid on Desktop */
 @media (min-width: 768px) {
-    .workflow-item:not(:last-child)::after {
-        width: 60%;
-        height: 1px;
-        top: 1.5rem; /* Aligns with the middle of the number circle */
-        left: 70%;
-    }
+  .workflow-items {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .workflow-item {
+    width: 260px;
+    margin-bottom: 0;
+  }
+}
+
+/* Optional: Gradient Text */
+.gradient-text {
+  background: linear-gradient(to right, #f97316, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
