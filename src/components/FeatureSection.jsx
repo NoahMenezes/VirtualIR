@@ -17,7 +17,7 @@ const featureItems = [
     }
 ];
 
-const FeaturesSection = () => (
+const FeatureSection = () => (
     <div className="container features-section">
         <div className="features-grid">
             <div className="code-block">
@@ -53,4 +53,4 @@ const FeaturesSection = () => (
     </div>
 );
 
-export default FeaturesSection;
+export default FeatureSection;
