@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Auth.css'; // Import the new CSS
+import './Auth.css'; // Import the new CSS
 
 const AuthPage = () => {
     const [isSignUp, setIsSignUp] = useState(false);
