@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// 1. Import the Link component
+import { Link } from 'react-router-dom';
 import { MenuIcon, CloseIcon } from './Icons';
 import '../App.css';
 
@@ -17,33 +19,44 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="container navbar-container">
                 <div className="logo-container">
-                    <img className="logo-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiBmaWxsPSIjZjU5ZTAwIj48cGF0aCBkPSJNMjI0IDEyOGEyNCAyNCAwIDAgMS0yNCAyNGgtNjguNjlsMjEuMTUgMjEuMTVhOCA4IDAgMCAxLTExLjMyIDExLjMxbC0zNi0zNmE4IDggMCAwIDEtLjAxLTEyLjQzbDM2LTM2YTggOCAwIDAgMSAxMS4zMiAxMS4zMUwxMzEuMzEgMTI4SDIwMGEyNCAyNCAwIDAgMSAyNCAyNFpNMzIgMTI4YTI0IDINCAwIDAgMCAyNCIDI0aDY4LjY5bC0yMS4xNSAyMS4xNWE4IDggMCAwIDAgMTEuMzIgMTEuMzFsMzYtMzZhOCA4IDAgMCAwIC4wMS0xMi4zN2wtMzYtMzZhOCA4IDAgMCAwLTExLjMyIDExLjMxTDEyNC42OSAxMjhoLTY4LjY5YTI0IDIIVCAwIDAgMC0yNCAyNFoiLz48L3N2Zz4=" alt="logo" />
-                    <span className="logo-text">VirtualIR</span>
+                    {/* Make the logo link to the homepage */}
+                    <Link to="/"> 
+                        <img className="logo-img" src="data:image/svg+xml;base64,...(your long svg string)..." alt="logo" />
+                    </Link>
+                    <Link to="/">
+                        <span className="logo-text">VirtualIR</span>
+                    </Link>
                 </div>
+                
                 <ul className="nav-links">
                     {navItems.map((item, index) => (
                         <li key={index}><a href={item.href}>{item.label}</a></li>
                     ))}
                 </ul>
+
+                {/* 2. UPDATE THE BUTTONS */}
                 <div className="nav-buttons">
-                    <a href="#" className="btn btn-secondary">Sign In</a>
-                    <a href="#" className="btn btn-primary">Create an Account</a>
+                    <Link to="/auth" className="btn btn-secondary">Sign In</Link>
+                    <Link to="/auth" className="btn btn-primary">Create an Account</Link>
                 </div>
+
                 <div className="mobile-menu-toggle">
                     <button onClick={toggleNavbar}>
                         {mobileDrawerOpen ? <CloseIcon /> : <MenuIcon />}
                     </button>
                 </div>
             </div>
+
             <div className={`mobile-menu ${mobileDrawerOpen ? 'open' : ''}`}>
+                 {/* Also update the mobile menu buttons */}
                 <ul>
                     {navItems.map((item, index) => (
-                        <li key={index}><a href={item.href}>{item.label}</a></li>
+                        <li key={index}><a href={item.href} onClick={toggleNavbar}>{item.label}</a></li>
                     ))}
                 </ul>
                 <div className="mobile-menu-buttons">
-                    <a href="#" className="btn btn-secondary">Sign In</a>
-                    <a href="#" className="btn btn-primary">Create an Account</a>
+                    <Link to="/auth" className="btn btn-secondary" onClick={toggleNavbar}>Sign In</Link>
+                    <Link to="/auth" className="btn btn-primary" onClick={toggleNavbar}>Create an Account</Link>
                 </div>
             </div>
         </nav>
