@@ -1,77 +1,141 @@
-import React, { useState } from 'react';
-import { CheckIcon } from './Icons'; // Assuming you have this from a previous step
-import './Pricing.css';
+// src/components/Pricing.jsx
 
-const pricingOptions = [
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Pricing.css'; // Create this new CSS file for the component
+
+// Structured data for pricing plans
+const pricingPlans = [
   {
-    title: 'Free',
-    monthlyPrice: 0,
-    yearlyPrice: 0,
-    description: 'For individuals and small teams getting started.',
-    features: ['5 Projects', '1 Team Member', 'Basic Analytics', 'Community Support'],
-    featured: false,
+    name: "Starter",
+    description: "Perfect for individuals and small teams getting started.",
+    monthlyPrice: 29,
+    annualPrice: 290,
+    isPopular: false,
+    features: [
+      "5 Projects",
+      "Basic Analytics",
+      "24/7 Email Support",
+      "10 GB Storage",
+      "Up to 5 Team Members",
+    ],
+    buttonText: "Choose Plan",
   },
   {
-    title: 'Pro',
-    monthlyPrice: 15,
-    yearlyPrice: 144,
-    description: 'For growing teams that need more power and support.',
-    features: ['Unlimited Projects', '5 Team Members', 'Advanced Analytics', 'Priority Email Support', 'AI Assistant'],
-    featured: true,
+    name: "Pro",
+    description: "Ideal for growing businesses that need more power and features.",
+    monthlyPrice: 79,
+    annualPrice: 790,
+    isPopular: true,
+    features: [
+      "50 Projects",
+      "Advanced Analytics",
+      "Priority Phone & Email Support",
+      "100 GB Storage",
+      "Up to 25 Team Members",
+      "AI Assistant",
+      "API Access",
+    ],
+    buttonText: "Get Started Now",
   },
   {
-    title: 'Enterprise',
-    monthlyPrice: 49,
-    yearlyPrice: 520,
-    description: 'For large organizations with advanced security and support needs.',
-    features: ['Everything in Pro', 'Unlimited Team Members', 'Dedicated Account Manager', 'SSO & Security Audits'],
-    featured: false,
+    name: "Enterprise",
+    description: "For large organizations with custom needs and dedicated support.",
+    monthlyPrice: "Custom",
+    annualPrice: "Custom",
+    isPopular: false,
+    features: [
+      "Unlimited Projects",
+      "Custom Analytics & Reporting",
+      "Dedicated Account Manager",
+      "Unlimited Storage",
+      "Unlimited Team Members",
+      "Single Sign-On (SSO)",
+      "On-Premise Deployment Option",
+    ],
+    buttonText: "Contact Sales",
   },
 ];
 
 const Pricing = () => {
-  const [isYearly, setIsYearly] = useState(false);
+  const [billingCycle, setBillingCycle] = useState('monthly'); // 'monthly' or 'annually'
+
+  const handleToggle = () => {
+    setBillingCycle(prev => (prev === 'monthly' ? 'annually' : 'monthly'));
+  };
 
   return (
-    <div className="container pricing-section">
-      <h2 className="hero-title">
-        Choose a Plan That's <span className="gradient-text">Right For You</span>
-      </h2>
-      <p className="hero-subtitle">
-        Simple, transparent pricing. No hidden fees.
-      </p>
+    <div className="pricing-section-wrapper">
+      <div className="container pricing-section">
+        {/* Section Header */}
+        <div className="pricing-header">
+          <h2 className="pricing-title">
+            Flexible Plans for <span className="gradient-text">Every Team</span>
+          </h2>
+          <p className="pricing-subtitle">
+            Choose the plan that's right for you. All plans come with a 14-day free trial. No credit card required.
+          </p>
+        </div>
 
-      <div className="pricing-toggle">
-        <span className={!isYearly ? 'font-semibold' : 'text-gray-400'}>Monthly</span>
-        <label className="toggle-switch">
-          <input type="checkbox" checked={isYearly} onChange={() => setIsYearly(!isYearly)} />
-          <span className="slider"></span>
-        </label>
-        <span className={isYearly ? 'font-semibold' : 'text-gray-400'}>Yearly (Save 20%)</span>
-      </div>
+        {/* Billing Cycle Toggle */}
+        <div className="billing-toggle-container">
+          <span>Monthly</span>
+          <button 
+            className={`toggle-switch ${billingCycle === 'annually' ? 'toggled' : ''}`}
+            onClick={handleToggle}
+            aria-label="Toggle billing cycle"
+          >
+            <span className="toggle-handle"></span>
+          </button>
+          <span>
+            Annually <span className="discount-badge">Save 15%</span>
+          </span>
+        </div>
 
-      <div className="pricing-grid">
-        {pricingOptions.map((option, index) => (
-          <div key={index} className={`pricing-card ${option.featured ? 'featured' : ''}`}>
-            <h3>{option.title}</h3>
-            <p className="mt-4 text-gray-400">{option.description}</p>
-            <div className="price">
-              ${isYearly ? option.yearlyPrice / 12 : option.monthlyPrice}
-              <span className="price-period">/month</span>
+        {/* Pricing Grid */}
+        <div className="pricing-grid">
+          {pricingPlans.map((plan, index) => (
+            <div key={index} className={`pricing-card ${plan.isPopular ? 'popular' : ''}`}>
+              {plan.isPopular && <div className="popular-badge">Most Popular</div>}
+              
+              <div className="card-header">
+                <h3 className="plan-name">{plan.name}</h3>
+                <p className="plan-description">{plan.description}</p>
+              </div>
+
+              <div className="price-section">
+                {typeof plan.monthlyPrice === 'number' ? (
+                  <>
+                    <span className="price-currency">$</span>
+                    <span className="price-amount">
+                      {billingCycle === 'monthly' ? plan.monthlyPrice : plan.annualPrice / 12}
+                    </span>
+                    <span className="price-cycle">/ month</span>
+                  </>
+                ) : (
+                  <span className="price-custom">{plan.monthlyPrice}</span>
+                )}
+              </div>
+              
+              {typeof plan.annualPrice === 'number' && billingCycle === 'annually' && (
+                  <p className="annual-billing-notice">Billed as ${plan.annualPrice} per year</p>
+              )}
+
+              <ul className="features-list">
+                {plan.features.map((feature, i) => (
+                  <li key={i}>{feature}</li>
+                ))}
+              </ul>
+              
+              <Link 
+                to="/auth" 
+                className={`btn ${plan.isPopular ? 'btn-primary' : 'btn-secondary'} cta-button`}
+              >
+                {plan.buttonText}
+              </Link>
             </div>
-            <ul className="feature-list">
-              {option.features.map((feature, i) => (
-                <li key={i}>
-                  <CheckIcon />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-            <a href="#" className={`btn ${option.featured ? 'btn-primary' : 'btn-secondary'}`}>
-              Get Started
-            </a>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
