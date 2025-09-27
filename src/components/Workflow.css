@@ -1,93 +1,203 @@
+/* ===== Workflow Section ===== */
+
+/* This wrapper provides a background and separates it from other sections */
+.workflow-section-wrapper {
+  padding: 6rem 0;
+  background-color: #111111; /* A slightly darker background */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle background pattern */
+.workflow-section-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.1), transparent 30%);
+    z-index: 0;
+}
+
 .workflow-section {
-  padding: 5rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Styling */
+.workflow-header {
   text-align: center;
-  background: #111827;
-  color: white;
-  border-bottom: 1px solid #2d2d2d;
-}
-
-.workflow-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.workflow-subtitle {
-  font-size: 1.1rem;
-  color: #d1d5db;
-  margin-bottom: 4rem;
-  max-width: 600px;
+  margin-bottom: 5rem;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.workflow-items {
+.workflow-main-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .workflow-main-title {
+    font-size: 3.25rem;
+  }
+}
+
+.workflow-main-subtitle {
+  font-size: 1.125rem;
+  color: #a3a3a3;
+  line-height: 1.6;
+}
+
+/* Workflow Grid Layout */
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* On medium screens, go to 2 columns */
+@media (min-width: 768px) {
+  .workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* On large screens, go to 3 columns */
+@media (min-width: 1024px) {
+  .workflow-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Keyframe animation for cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Individual Workflow Card Styling */
+.workflow-card {
+  background-color: rgba(23, 23, 23, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 2rem 1.75rem;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  
+  /* Apply animation */
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+/* Stagger the animation for each card */
+.workflow-card:nth-child(1) { animation-delay: 0.1s; }
+.workflow-card:nth-child(2) { animation-delay: 0.2s; }
+.workflow-card:nth-child(3) { animation-delay: 0.3s; }
+.workflow-card:nth-child(4) { animation-delay: 0.4s; }
+.workflow-card:nth-child(5) { animation-delay: 0.5s; }
+.workflow-card:nth-child(6) { animation-delay: 0.6s; }
+
+
+.workflow-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(249, 115, 22, 0.5); /* Highlight with brand color */
+}
+
+.workflow-card-header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.workflow-item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #2c2c2c;
-  padding: 2rem;
-  border-radius: 1rem;
-  position: relative;
-  max-width: 300px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.workflow-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.step-number {
+.workflow-icon-container {
+  flex-shrink: 0;
   width: 3rem;
   height: 3rem;
-  border-radius: 50%;
-  background: #f97316;
-  color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-weight: bold;
-  font-size: 1.25rem;
-  margin: 0 auto 1rem;
-  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.3);
+  justify-content: center;
+  border-radius: 50%;
+  background-image: linear-gradient(to right, #f97316, #c2410c);
+  color: #ffffff;
 }
 
-.workflow-item h4 {
+.workflow-icon-container svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.workflow-card-title {
   font-size: 1.25rem;
-  margin-bottom: 0.75rem;
   font-weight: 600;
-  color: #f3f4f6;
+  color: #ffffff;
 }
 
-.workflow-item p {
-  font-size: 0.95rem;
-  color: #9ca3af;
+.workflow-card-description {
+  color: #a3a3a3;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
-/* Responsive Grid on Desktop */
-@media (min-width: 768px) {
-  .workflow-items {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .workflow-item {
-    width: 260px;
-    margin-bottom: 0;
-  }
+.workflow-card-details {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
 }
 
-/* Optional: Gradient Text */
-.gradient-text {
-  background: linear-gradient(to right, #f97316, #facc15);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.workflow-card-details li {
+  color: #d4d4d4;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Custom bullet points for the detail list */
+.workflow-card-details li::before {
+  content: '✓';
+  color: #f97316;
+  margin-right: 0.75rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* Footer / CTA Section */
+.workflow-footer {
+    text-align: center;
+    margin-top: 6rem;
+    padding: 2.5rem;
+    background-color: rgba(23, 23, 23, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+}
+
+.workflow-footer h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.workflow-footer p {
+    color: #a3a3a3;
+    margin-bottom: 2rem;
+}
+
+/* Re-using button styles from your App.css */
+.workflow-footer .btn-primary {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
 }
