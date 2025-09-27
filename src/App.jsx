@@ -11,8 +11,11 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import FeatureSection from './components/FeatureSection';
 import CreateAccount from './components/CreateAccount';
-// ✅ 1. Import the new Testimonials component
+
 import Testimonials from './components/Testimonials';
+import Pricing from './components/Pricing';
+import Workflow from './components/Workflow'; // ✅ your actual component
+
 
 const particleOptions = {
     // ... your existing particleOptions object
@@ -43,6 +46,8 @@ const MainLayout = () => (
             <FeatureSection />
             {/* ✅ 2. Add the Testimonials section to the main page */}
             <Testimonials />
+            <Pricing />
+            <Workflow />
         </main>
     </>
 );
@@ -63,9 +68,12 @@ const App = () => {
             <Routes>
                 {/* Route for the main landing page */}
                 <Route path="/" element={<MainLayout />} />
-                
                 {/* Route for the authentication page */}
                 <Route path="/auth" element={<CreateAccount />} />
+                 {/* ✅ Newly added routes */}
+                <Route path="/workflow" element={<Workflow />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/testimonials" element={<Testimonials />} />
             </Routes>
         </div>
     );
