@@ -1,73 +1,244 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilitesl
+/* --- MODERN CSS RESET (Similar to Tailwind's Preflight) --- 
+  This section resets default browser styles for consistency.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* --- ROOT & BODY STYLES (From your file and the image) ---
+  This sets up the overall theme, colors, and fonts.
+*/
+:root {
+  /* Dark Theme (Default) */
+  --text-color: rgba(255, 255, 255, 0.87);
+  --background-color: #1a1a1a; /* Darker than #242424 for more contrast */
+  --primary-color: #646cff;
+  --primary-hover: #535bf2;
+  --button-bg: #2a2a2a;
+  --border-color: #444;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: #213547;
+    --background-color: #ffffff;
+    --primary-color: #646cff;
+    --primary-hover: #747bff;
+    --button-bg: #f9f9f9;
+    --border-color: #ddd;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* --- WEBSITE LAYOUT & COMPONENTS (Based on the image) ---
+*/
+
+/* A container to center the content */
+.container {
+  width: 100%;
+  max-width: 1280px; /* Common max-width for large screens */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Header and Navigation */
+.header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Main Content Section */
+.hero-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Two columns on larger screens */
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Typography */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 2.5em; /* Adjusted for responsiveness */
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 1rem;
 }
 
-button {
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.2em;
+  }
+}
+
+h1 .highlight {
+  background: -webkit-linear-gradient(45deg, #f56565, #f6e05e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Code block on the left */
+.code-block {
+  background-color: #2d3748;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+}
+
+/* Feature list on the right */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  color: #48bb78; /* Green color for the checkmark */
+  width: 24px;
+  height: 24px;
+}
+
+.feature-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.feature-description {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.25s;
+  text-align: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.button-secondary {
+  background-color: transparent;
+  border-color: var(--border-color);
+}
+
+.button-secondary:hover {
+  background-color: var(--button-bg);
+  border-color: var(--primary-color);
+}
+
+.button-primary {
+  color: white;
+  background-image: linear-gradient(to right, #ed8936, #f56565);
+}
+
+.button-primary:hover {
+  filter: brightness(1.1);
 }
