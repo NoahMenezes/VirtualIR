@@ -4,13 +4,13 @@ import '../App.css';
 const HeroSection = () => (
     <div className="hero-section">
         <h1 className="hero-title">
-            Accelerate your
+            VirtualIR build tools
             <span className="gradient-text">
-                {' '}coding workflow.
+                {' '}for developers
             </span>
         </h1>
         <p className="hero-subtitle">
-            Track the performance of your VR apps and gain insights into user behavior. Empower your creativity and bring your ideas to life with our intuitive developer tools.
+            Empower your creativity and bring your VR app ideas to life with our intuitive development tools. Get started today and turn your imagination into immersive reality!
         </p>
     </div>
 );

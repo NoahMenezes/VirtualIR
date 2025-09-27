@@ -1,0 +1,91 @@
+/* --- Authentication Page Styles --- */
+.auth-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    width: 100%;
+}
+
+.auth-form-box {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    
+    /* "Glass" effect to match your site's theme */
+    background-color: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between form elements */
+}
+
+.auth-form-box h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    /* Using the same gradient as your hero title */
+    background-image: linear-gradient(to right, #fb923c, #f97316);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.input-group {
+    position: relative;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    color: #e5e7eb;
+    
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.auth-input:focus {
+    border-bottom-color: #f97316; /* Orange highlight on focus */
+}
+
+.auth-input::placeholder {
+    color: #6b7280;
+}
+
+/* Make the button full-width and more prominent */
+.auth-form-box .btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.auth-toggle-link {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.auth-toggle-link span {
+    color: #fb923c;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.auth-toggle-link span:hover {
+    color: #ea580c;
+}
