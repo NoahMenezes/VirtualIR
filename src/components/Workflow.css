@@ -1,0 +1,92 @@
+/* src/components/Workflow.css */
+
+.workflow-section {
+    padding: 5rem 1rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #404040; /* Separator line */
+}
+
+.workflow-items {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.workflow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* --- Responsive Layout for Desktop --- */
+@media (min-width: 768px) {
+    .workflow-items {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .workflow-item {
+        width: 30%;
+        margin-bottom: 0;
+    }
+}
+
+.step-number {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #262626;
+    border: 1px solid #404040;
+    color: #f97316; /* Orange accent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.workflow-item h4 {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.workflow-item p {
+    margin-top: 0.75rem;
+    color: #a3a3a3;
+}
+
+/* --- Dashed Connecting Line --- */
+.workflow-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23404040' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+/* Line for mobile (vertical) */
+@media (max-width: 767px) {
+    .workflow-item:not(:last-child)::after {
+        height: 4rem;
+        width: 1px;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: -1rem;
+    }
+}
+
+/* Line for desktop (horizontal) */
+@media (min-width: 768px) {
+    .workflow-item:not(:last-child)::after {
+        width: 60%;
+        height: 1px;
+        top: 1.5rem; /* Aligns with the middle of the number circle */
+        left: 70%;
+    }
+}

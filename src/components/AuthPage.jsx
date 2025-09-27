@@ -12,7 +12,7 @@ const AuthPage = () => {
         <div className="auth-container">
             <div className="auth-form-box">
                 <h2>{isSignUp ? 'Create Account' : 'Sign In'}</h2>
-                
+
                 <form>
                     <div className="input-group">
                         <input 
@@ -57,5 +57,3 @@ const AuthPage = () => {
         </div>
     );
 };
-
-export default AuthPage;

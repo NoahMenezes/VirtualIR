@@ -10,8 +10,9 @@ import { loadSlim } from "tsparticles-slim";
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import FeatureSection from './components/FeatureSection';
-// ✅ Changed AuthPage to the new CreateAccount component
-import CreateAccount from './components/CreateAccount'; 
+import CreateAccount from './components/CreateAccount';
+// ✅ 1. Import the new Testimonials component
+import Testimonials from './components/Testimonials';
 
 const particleOptions = {
     // ... your existing particleOptions object
@@ -40,6 +41,8 @@ const MainLayout = () => (
         <main>
             <HeroSection />
             <FeatureSection />
+            {/* ✅ 2. Add the Testimonials section to the main page */}
+            <Testimonials />
         </main>
     </>
 );
@@ -61,7 +64,7 @@ const App = () => {
                 {/* Route for the main landing page */}
                 <Route path="/" element={<MainLayout />} />
                 
-                {/* Route for the authentication page, now showing your new component */}
+                {/* Route for the authentication page */}
                 <Route path="/auth" element={<CreateAccount />} />
             </Routes>
         </div>
