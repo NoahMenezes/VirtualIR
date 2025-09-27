@@ -8,6 +8,7 @@ import { loadSlim } from "tsparticles-slim";
 // Component imports
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import FeaturesSection from './components/FeaturesSection';
 import FeaturesSection from './components/FeatureSection';
 
 const App = () => {
@@ -85,7 +86,7 @@ const App = () => {
                 init={particlesInit}
                 options={particleOptions}
             />
-            
+
             <Navbar />
             <main>
                 <HeroSection />
@@ -94,5 +95,3 @@ const App = () => {
         </div>
     );
 };
-
-export default App;
