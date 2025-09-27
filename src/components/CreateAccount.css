@@ -1,0 +1,73 @@
+/* src/components/CreateAccount.css */
+
+.create-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem;
+    width: 100%;
+}
+
+.form-wrapper {
+    /* Uses a glassmorphism effect to match your navbar */
+    background-color: rgba(38, 38, 38, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(64, 64, 64, 0.8);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.form {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    background-color: #262626;
+    border: 1px solid #404040;
+    color: #ffffff;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #f97316; /* Orange accent from your buttons */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.signin-link {
+    margin-top: 2rem;
+    text-align: center;
+    color: #a3a3a3;
+}
+
+.signin-link a {
+    color: #fb923c;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.signin-link a:hover {
+    color: #ea580c;
+}

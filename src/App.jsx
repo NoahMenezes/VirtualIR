@@ -10,10 +10,11 @@ import { loadSlim } from "tsparticles-slim";
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import FeatureSection from './components/FeatureSection';
-import AuthPage from './components/AuthPage'; // Make sure you have this component
+// ✅ Changed AuthPage to the new CreateAccount component
+import CreateAccount from './components/CreateAccount'; 
 
 const particleOptions = {
-    // ... (your existing particleOptions object)
+    // ... your existing particleOptions object
     background: { color: { value: "#171717" } },
     fpsLimit: 120,
     interactivity: {
@@ -32,7 +33,7 @@ const particleOptions = {
     detectRetina: true,
 };
 
-// This new component will render your main landing page layout
+// This component renders your main landing page layout
 const MainLayout = () => (
     <>
         <Navbar />
@@ -60,8 +61,8 @@ const App = () => {
                 {/* Route for the main landing page */}
                 <Route path="/" element={<MainLayout />} />
                 
-                {/* Route for the authentication page */}
-                <Route path="/auth" element={<AuthPage />} />
+                {/* Route for the authentication page, now showing your new component */}
+                <Route path="/auth" element={<CreateAccount />} />
             </Routes>
         </div>
     );
