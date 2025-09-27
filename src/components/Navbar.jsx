@@ -1,46 +1,53 @@
-import React, { useState } from 'react'
-import { navItems } from '../constants'
-import { Menu,X } from 'lucide-react'
+import React, { useState } from 'react';
+import { MenuIcon, CloseIcon } from './Icons';
+import '../App.css';
+
+const navItems = [
+    { href: "#", label: "Features" },
+    { href: "#", label: "Workflow" },
+    { href: "#", label: "Pricing" },
+    { href: "#", label: "Testimonials" },
+];
+
 const Navbar = () => {
-    const [mobileDrawerOpen, setMobileDrawerOpen]=useState(false);
-    const toggleNavbar=()=>{
-        setMobileDrawerOpen(!mobileDrawerOpen)
-    }
-  return (
-    <div>
-      <nav className='sticky top-0 z-50 py-3 backdrop-blur-ig border-b border-neutral-700/80'>
-        <div className="container px-4 mx-auto relative text-sm">
-            <div className="flex justify-center items-center">
-                <div className="flex items-center flex-shrink-0"></div>
-                <img className="h-10 w-10 mr-2" src={logo} alt="logo" />
-                <span className="text-xl tracking-tight">VirtualIR</span>
-            </div>
-            <ul className="hidden lg:flex ml-14 space-x-12">
-                {navItems.map((item,index)=>(
-                    <li key={index}>
-                        <a href={item.href}>{item.label}</a>
-                    </li>
+    const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+    const toggleNavbar = () => setMobileDrawerOpen(!mobileDrawerOpen);
 
-                ))}
-            </ul>
-            <div className="hidden lg:flex justify-center space-x-12 items-center">
-                <a href="#" className='py-2 px-3 border rounded-md'>
-                    Sign In
-                </a>
-                <a href="#" className='bg-gradient-to-r from-orange-500 to-orange-800 py-2 px-3 rounded-md'>
-                    Create an Account
-                </a>
+    return (
+        <nav className="navbar">
+            <div className="container navbar-container">
+                <div className="logo-container">
+                    <img className="logo-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiBmaWxsPSIjZjU5ZTAwIj48cGF0aCBkPSJNMjI0IDEyOGEyNCAyNCAwIDAgMS0yNCAyNGgtNjguNjlsMjEuMTUgMjEuMTVhOCA4IDAgMCAxLTExLjMyIDExLjMxbC0zNi0zNmE4IDggMCAwIDEtLjAxLTEyLjQzbDM2LTM2YTggOCAwIDAgMSAxMS4zMiAxMS4zMUwxMzEuMzEgMTI4SDIwMGEyNCAyNCAwIDAgMSAyNCAyNFpNMzIgMTI4YTI0IDINCAwIDAgMCAyNCIDI0aDY4LjY5bC0yMS4xNSAyMS4xNWE4IDggMCAwIDAgMTEuMzIgMTEuMzFsMzYtMzZhOCA4IDAgMCAwIC4wMS0xMi4zN2wtMzYtMzZhOCA4IDAgMCAwLTExLjMyIDExLjMxTDEyNC42OSAxMjhoLTY4LjY5YTI0IDIIVCAwIDAgMC0yNCAyNFoiLz48L3N2Zz4=" alt="logo" />
+                    <span className="logo-text">VirtualIR</span>
+                </div>
+                <ul className="nav-links">
+                    {navItems.map((item, index) => (
+                        <li key={index}><a href={item.href}>{item.label}</a></li>
+                    ))}
+                </ul>
+                <div className="nav-buttons">
+                    <a href="#" className="btn btn-secondary">Sign In</a>
+                    <a href="#" className="btn btn-primary">Create an Account</a>
+                </div>
+                <div className="mobile-menu-toggle">
+                    <button onClick={toggleNavbar}>
+                        {mobileDrawerOpen ? <CloseIcon /> : <MenuIcon />}
+                    </button>
+                </div>
             </div>
-            <div className="lg:hidden md:flex-col justify-end">
-                <button onClick={toggleNavbar}>
-                {mobileDrawerOpen ? <X />:<Menu />}
-                </button>{M}
+            <div className={`mobile-menu ${mobileDrawerOpen ? 'open' : ''}`}>
+                <ul>
+                    {navItems.map((item, index) => (
+                        <li key={index}><a href={item.href}>{item.label}</a></li>
+                    ))}
+                </ul>
+                <div className="mobile-menu-buttons">
+                    <a href="#" className="btn btn-secondary">Sign In</a>
+                    <a href="#" className="btn btn-primary">Create an Account</a>
+                </div>
             </div>
-        </div>
-      </nav>
+        </nav>
+    );
+};
 
-    </div>
-  )
-}
-
-export default Navbar
+export default Navbar;
