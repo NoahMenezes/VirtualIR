@@ -1,65 +1,95 @@
 // src/components/Testimonials.jsx
 
 import React from 'react';
-import './Testimonials.css'; // Make sure to update your CSS file with the new styles
+import './Testimonials.css'; // Your CSS file is perfect as-is
 
-// Expanded and more detailed testimonial data
+// --- MODIFIED: Added three new testimonial objects ---
 const testimonialsData = [
   {
     quote: "VirtualIR's tools have completely transformed our development workflow. The AI assistance is a game-changer, cutting our debug time in half!",
     name: "Alex Johnson",
-    title: "Lead VR Developer",
-    company: "Innovatech Solutions",
+    title: "Lead Developer",
+    company: "Slack",
     avatar: "https://i.pravatar.cc/150?u=alexjohnson",
     rating: 5,
-    logo: "https://via.placeholder.com/100x40/FFFFFF/000000?text=Innovatech"
+    logo: "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg"
   },
   {
-    quote: "As a small studio, efficiency is key. The code merge and review features are incredibly intuitive and have saved us countless hours of work. We can now focus more on creativity.",
+    quote: "As a small studio, efficiency is key. The code merge and review features are incredibly intuitive and have saved us countless hours of work.",
     name: "Samantha Lee",
-    title: "Founder & Creative Director",
-    company: "Pixel Perfect Studios",
+    title: "Creative Director",
+    company: "Figma",
     avatar: "https://i.pravatar.cc/150?u=samanthalee",
     rating: 5,
-    logo: "https://via.placeholder.com/100x40/FFFFFF/000000?text=Pixel+Perfect"
+    logo: "https://cdn.worldvectorlogo.com/logos/figma-1.svg"
   },
   {
-    quote: "The analytics are surprisingly powerful. We're now making data-driven decisions to improve user experience in our VR apps. The insights have been invaluable for our product strategy. Highly recommended!",
+    quote: "The analytics are surprisingly powerful. We're now making data-driven decisions to improve user experience in our VR apps.",
     name: "David Chen",
     title: "Product Manager",
-    company: "Reality Scape",
+    company: "Unity",
     avatar: "https://i.pravatar.cc/150?u=davidchen",
     rating: 5,
-    logo: "https://via.placeholder.com/100x40/FFFFFF/000000?text=RealityScape"
+    logo: "https://cdn.worldvectorlogo.com/logos/unity-69.svg"
   },
   {
-    quote: "The deployment process used to be our biggest bottleneck. With VirtualIR's CI/CD integration, we're pushing updates with zero downtime and complete confidence.",
+    quote: "The deployment process used to be our biggest bottleneck. With VirtualIR's CI/CD integration, we're pushing updates with zero downtime.",
     name: "Maria Garcia",
     title: "DevOps Engineer",
-    company: "QuantumLeap",
+    company: "Vercel",
     avatar: "https://i.pravatar.cc/150?u=mariagarcia",
     rating: 4,
-    logo: "https://via.placeholder.com/100x40/FFFFFF/000000?text=QuantumLeap"
+    logo: "https://www.svgrepo.com/show/354512/vercel-icon.svg"
   },
   {
-    quote: "Collaboration has never been smoother. The real-time code review and feedback tools have drastically improved our team's synergy and code quality.",
+    quote: "Collaboration has never been smoother. The real-time code review and feedback tools have drastically improved our team's synergy.",
     name: "Ben Carter",
     title: "Senior Software Engineer",
-    company: "Code Weavers",
+    company: "GitHub",
     avatar: "https://i.pravatar.cc/150?u=bencarter",
     rating: 5,
-    logo: "https://via.placeholder.com/100x40/FFFFFF/000000?text=CodeWeavers"
+    logo: "https://cdn.worldvectorlogo.com/logos/github-icon-1.svg"
   },
   {
     quote: "I was skeptical about the AI Assistant at first, but it has become an indispensable part of my toolkit. It suggests optimizations I would have never thought of.",
     name: "Emily White",
-    title: "Freelance Developer",
-    company: "E. White Creations",
+    title: "Product Designer",
+    company: "Notion",
     avatar: "https://i.pravatar.cc/150?u=emilywhite",
     rating: 5,
-    logo: "https://via.placeholder.com/100x40/FFFFFF/000000?text=Creations"
+    logo: "https://cdn.worldvectorlogo.com/logos/notion-1.svg"
+  },
+  // New testimonials added below
+  {
+    quote: "Containerizing our applications used to be a complex task. VirtualIR simplified the entire process, making our deployments faster and more reliable than ever before.",
+    name: "Kenji Tanaka",
+    title: "Principal Engineer",
+    company: "Docker",
+    avatar: "https://i.pravatar.cc/150?u=kenjitanaka",
+    rating: 5,
+    logo: "https://cdn.worldvectorlogo.com/logos/docker.svg"
+  },
+  {
+    quote: "The insights from the performance monitoring tools are top-notch. We identified and fixed critical payment processing bottlenecks, significantly improving customer satisfaction.",
+    name: "Fatima Ahmed",
+    title: "Fintech Architect",
+    company: "Stripe",
+    avatar: "https://i.pravatar.cc/150?u=fatimaahmed",
+    rating: 5,
+    logo: "https://cdn.worldvectorlogo.com/logos/stripe-4.svg"
+  },
+  {
+    quote: "Our team's productivity has skyrocketed. The seamless integration with our issue tracking workflow means less context switching and more time building a great product.",
+    name: "Olivia Chen",
+    title: "Head of Product",
+    company: "Linear",
+    avatar: "https://i.pravatar.cc/150?u=oliviachen",
+    rating: 5,
+    logo: "https://cdn.worldvectorlogo.com/logos/linear-1.svg"
   },
 ];
+// --- End of modifications ---
+
 
 // A helper component to render the star ratings
 const StarRating = ({ rating }) => {
@@ -112,8 +142,8 @@ const Testimonials = () => {
               </div>
             </div>
           ))}
+          <br />
         </div>
-
         <div className="testimonials-footer">
           <h3>Join Thousands of Happy Developers</h3>
           <p>Start your 14-day free trial and experience the difference yourself.</p>

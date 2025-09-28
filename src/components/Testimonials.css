@@ -1,26 +1,52 @@
 /* ===== Testimonials Section ===== */
+
+/* 1. Root Variables for Easy Theming */
+:root {
+  --background-dark: #111111;
+  --card-background: #18181b;
+  --border-color: #27272a;
+  --accent-color: #f97316;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --star-filled: #facc15;
+  --star-empty: #404040;
+}
+
 .testimonials-wrapper {
-  padding: 6rem 0;
-  background-color: #111111;
+  padding: 6rem 1rem;
+  background-color: var(--background-dark);
   position: relative;
   overflow: hidden;
 }
 
-/* Background decorative element */
 .testimonials-wrapper::before {
   content: '';
   position: absolute;
-  top: -20%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background-image: radial-gradient(circle, rgba(249, 115, 22, 0.08), transparent 60%);
+  top: -25%;
+  right: -25%;
+  width: 900px;
+  height: 900px;
+  background-image: radial-gradient(circle, rgba(249, 115, 22, 0.06), transparent 55%);
   z-index: 0;
+  animation: pulse-glow 10s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-glow {
+  from {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.05);
+    opacity: 1;
+  }
 }
 
 .testimonials-section {
   position: relative;
   z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .testimonials-header {
@@ -33,6 +59,7 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
+  color: var(--text-primary);
 }
 
 @media (min-width: 768px) {
@@ -43,18 +70,17 @@
 
 .testimonials-subtitle {
   font-size: 1.125rem;
-  color: #a3a3a3;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* Testimonials Grid Layout */
+/* ===== Testimonials Grid Layout ===== */
 .testimonials-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
 }
 
-/* For larger screens, use a multi-column layout */
 @media (min-width: 768px) {
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -62,31 +88,29 @@
 }
 
 @media (min-width: 1024px) {
-  /* This creates a masonry-like effect */
   .testimonials-grid {
     column-count: 3;
     column-gap: 2rem;
-    display: block; /* Overrides grid */
+    display: block;
   }
 }
 
-/* Individual Testimonial Card */
+/* ===== Individual Testimonial Card ===== */
 .testimonial-card {
-  background-color: #1c1c1c;
-  border: 1px solid #333;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
   border-radius: 1rem;
   padding: 2.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  will-change: transform, box-shadow;
 
-  /* For masonry layout */
   break-inside: avoid;
   margin-bottom: 2rem;
 
-  /* Animation */
   opacity: 0;
   animation: fadeIn 0.5s ease-out forwards;
 }
@@ -99,10 +123,30 @@
 .testimonial-card:nth-child(5) { animation-delay: 0.5s; }
 .testimonial-card:nth-child(6) { animation-delay: 0.6s; }
 
+/* ===== NEW: Added a keyframe animation for the pulse effect ===== */
+@keyframes pulse-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
+
+/* ===== MODIFIED: Updated hover state to use the new animation ===== */
 .testimonial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  /* The card still lifts up, but the scaling is now handled by the animation */
+  transform: translateY(-12px); 
+  border-color: var(--accent-color);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.25), 
+              0 0 20px -5px rgba(249, 115, 22, 0.2);
+  /* Apply the pulsing animation on hover */
+  animation: fadeIn 0.5s ease-out forwards, 
+             pulse-scale 2s infinite ease-in-out;
 }
 
 .card-content {
@@ -114,44 +158,53 @@
   width: auto;
   opacity: 0.7;
   margin-bottom: 1.5rem;
-  filter: brightness(0) invert(1); /* Makes logos white */
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s ease;
 }
 
-/* Star Rating Styles */
+.testimonial-card:hover .company-logo {
+  opacity: 1;
+}
+
 .star-rating {
   display: flex;
   gap: 0.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .star-icon {
   width: 1rem;
   height: 1rem;
-  color: #555; /* Unfilled star color */
+  color: var(--star-empty);
 }
 
 .star-icon.filled {
-  color: #facc15; /* Yellow for filled stars */
+  color: var(--star-filled);
 }
 
 .testimonial-quote {
   font-size: 1.05rem;
-  color: #d4d4d4;
+  color: var(--text-secondary);
   line-height: 1.7;
   margin: 0 0 2rem 0;
   font-style: italic;
-  border-left: 3px solid #f97316;
+  border-left: 3px solid var(--border-color);
   padding-left: 1.5rem;
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
-/* User Info Section */
+.testimonial-card:hover .testimonial-quote {
+  border-left-color: var(--accent-color);
+  color: var(--text-primary);
+}
+
 .user-info {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: auto; /* Pushes to the bottom */
+  margin-top: auto;
   padding-top: 1.5rem;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--border-color);
 }
 
 .avatar {
@@ -159,28 +212,45 @@
   height: 48px;
   border-radius: 50%;
   border: 2px solid #444;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover .avatar {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
 }
 
 .user-name {
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 .user-title {
   font-size: 0.875rem;
-  color: #a3a3a3;
+  color: var(--text-secondary);
 }
 .user-title span {
   font-weight: 500;
+  color: #c7c7c7;
 }
 
-/* Testimonials Footer (CTA) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .testimonials-footer {
   text-align: center;
   margin-top: 4rem;
   padding: 3rem;
-  background-color: #1c1c1c;
-  border: 1px solid #333;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
   border-radius: 1rem;
 }
 
@@ -188,14 +258,33 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
+  color: var(--text-primary);
 }
 
 .testimonials-footer p {
-  color: #a3a3a3;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
 .testimonials-footer .btn-primary {
   padding: 0.75rem 2rem;
   font-size: 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.testimonials-footer .btn-primary:hover {
+    background-color: #dd6b20;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #f97316, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
